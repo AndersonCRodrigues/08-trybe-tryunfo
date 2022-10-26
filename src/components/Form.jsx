@@ -10,7 +10,6 @@ export default class Form extends React.Component {
       onInputChange, onSaveButtonClick } = this.props;
     return (
       <form>
-        <h1>formulário</h1>
         <label htmlFor="cardName">
           Name
           <input
