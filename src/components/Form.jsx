@@ -1,6 +1,7 @@
 import React from 'react';
 import './form.css';
 import Props from 'prop-types';
+import CardTrunfo from './CardTrunfo';
 
 export default class Form extends React.Component {
   render() {
@@ -91,17 +92,9 @@ export default class Form extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        <label htmlFor="cardTrunfo">
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            id="cardTrunfo"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-          Super Trybe Trunfo
-        </label>
+        { hasTrunfo
+          ? <span>Você já tem um Super Trunfo em seu baralho</span>
+          : <CardTrunfo cardTrunfo={ cardTrunfo } onInputChange={ onInputChange } />}
         <button
           type="submit"
           data-testid="save-button"

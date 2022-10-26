@@ -54,6 +54,12 @@ class App extends React.Component {
     this.setState({ [name]: valor }, (this.handleIsDisable));
   };
 
+  handletoggleTrunfo = () => {
+    const { cardTrunfo } = this.state;
+
+    if (cardTrunfo) this.setState({ hasTrunfo: true, cardTrunfo: false });
+  };
+
   onSaveButtonClick = (e) => {
     e.preventDefault();
 
@@ -78,7 +84,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       isSaveButtonDisabled: true,
-    }));
+    }), (this.handletoggleTrunfo));
   };
 
   render() {
