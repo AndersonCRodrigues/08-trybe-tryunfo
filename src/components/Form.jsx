@@ -124,7 +124,7 @@ Form.propTypes = {
   cardAttr3: Props.string,
   cardImage: Props.string,
   cardRare: Props.string,
-  cardTrunfo: Props.string,
+  cardTrunfo: Props.bool,
   hasTrunfo: Props.string,
   isSaveButtonDisabled: Props.bool,
   onInputChange: Props.func,
