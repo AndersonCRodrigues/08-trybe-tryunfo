@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import NameFilter from './components/NameFilter';
 
 /* const INITIAL_STATE = {
   cardName: '',
@@ -26,6 +27,7 @@ class App extends React.Component {
     hasTrunfo: false,
     isSaveButtonDisabled: true,
     savedCard: [],
+    nameFilter: '',
   };
 
   handleIsDisable = () => {
@@ -103,7 +105,8 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      savedCard } = this.state;
+      savedCard, nameFilter } = this.state;
+    const filter = savedCard.filter((card) => card.cardName.includes(nameFilter));
 
     return (
       <div>
@@ -132,7 +135,13 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        {savedCard.map((card, index) => (
+        <section>
+          <NameFilter
+            nameFilter={ nameFilter }
+            onInputChange={ this.onInputChange }
+          />
+        </section>
+        {filter.map((card, index) => (
           <div key={ card.cardName }>
             <Card
               cardName={ card.cardName }
