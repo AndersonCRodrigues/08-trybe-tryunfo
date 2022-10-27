@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 import NameFilter from './components/NameFilter';
+import RareFilter from './components/RareFilter';
 
 /* const INITIAL_STATE = {
   cardName: '',
@@ -28,6 +29,7 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
     savedCard: [],
     nameFilter: '',
+    rareFilter: '',
   };
 
   handleIsDisable = () => {
@@ -105,8 +107,10 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      savedCard, nameFilter } = this.state;
-    const filter = savedCard.filter((card) => card.cardName.includes(nameFilter));
+      savedCard, nameFilter, rareFilter } = this.state;
+
+    const name = savedCard.filter((card) => card.cardName.includes(nameFilter));
+    const rare = name.filter((card) => rareFilter === '' || card.cardRare === rareFilter);
 
     return (
       <div>
@@ -140,9 +144,13 @@ class App extends React.Component {
             nameFilter={ nameFilter }
             onInputChange={ this.onInputChange }
           />
+          <RareFilter
+            rareFilter={ rareFilter }
+            onInputChange={ this.onInputChange }
+          />
         </section>
-        {filter.map((card, index) => (
-          <div key={ card.cardName }>
+        {rare.map((card, index) => (
+          <div key={ `${card.cardName + index}` }>
             <Card
               cardName={ card.cardName }
               cardDescription={ card.cardDescription }
