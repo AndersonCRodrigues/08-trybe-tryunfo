@@ -102,7 +102,6 @@ class App extends React.Component {
     if (trunfoCheck) this.setState({ hasTrunfo: false });
 
     const tempArr = savedCard.filter((_, index) => index !== indice);
-    console.log(trunfoCheck);
     this.setState({ savedCard: tempArr });
   };
 
